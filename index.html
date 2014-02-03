@@ -39,19 +39,418 @@
         <section>
           <h1>¿Why Go?</h1>
           <h3>¿Por qué Go?</h3>
-          <p>
-            <small>Created by <a href="http://victorcastell.com">Victor Castell</a> / <a href="http://twitter.com/victorcoder">@victorcoder</a></small>
+        </section>
+
+        <section>
+          <h1><a href="http://victorcastell.com">Victor Castell</a></h1>
+          <img class="img" src="me.jpg" />
+          <p><small><a href="http://twitter.com/victorcoder">@victorcoder</a></small></p>
+        </section>
+
+        <section>
+          <h1>Minds behind</h1>
+          <h3>Rob Pike: Unix, Plan 9</h2>
+          <h3>Ken Thompson: Unix, Plan 9, B and C</h2>
+          <h3>Russ Cox: Plan 9, Google Code Search, RE2</h3>
+          <h3>Robert Griesemer: V8, Java VM</h3>
+          <h4>Brad Fitzpatrick, Andrew Gerrand + lots of contributors</h4>
+        </section>
+
+        <section>
+          <h1>Precedents</h1>
+          <h2 class="fragment">Need for high-level programming in Unix</h2>
+          <h3 class="fragment">C++ became popular in the industry and research</h3>
+          <h2 class="fragment">Java - easy C++</h2>
+        </section>
+
+        <section>
+          <h1>Consecuences</h1>
+          <h2>C++ and Java are hard to use</h2>
+          <p>They are verbose and difficult to read, IDE's are required</p>
+          <p>We need "patterns" to address it's difficulty
+          <h2>Widely adopted today</h2>
+          <h3>Performant</h3>
+        </section>
+
+        <section>
+          <h1>Reaction</h1>
+          <h2>Bad developer experience</h2>
+          <h3>Python, Ruby, Lua, JavaScript, Erlang</h3><small>to scene</small>
+          <h2>Scala, Haskell</h2>
+          <h3>Golden era</h3>
+        </section>
+
+        <section>
+          <h2>Why this popularity?</h2>
+          <h3 class="fragment">Outsiders are dynamic</h3>
+          <h2 class="fragment">ease of use != dynamic</h2>
+        </section>
+
+        <section>
+          <h2>The good</h2>
+          <p>Efficcient, performat and safe</p>
+          <p>Very powerful in expert hands.</p>
+          <p>Really big systems are built on them.</p>
+          <p>- Adapts well to corporate environments: lots of coders, big systems</p>
+        </section>
+
+        <section>
+          <h2>The bad</h2>
+          <p>not developer friendly.</p>
+          <p>Compilers are slow and clumsy. Binaries are huge.</p>
+          <p>Many programmers prefer to avoid them.</p>
+          <p>They are old and not well suitted to multicore networked development.</p>
+          <p>- JVM have limits in memory management and it already found it's bounds.</p>
+        </section>
+
+        <section>
+          <h2>Dynamic</h2>
+          <h3 class="fragment">Don't have the downsides</h3>
+          <h4 class="fragment">Less keystrokes because of dinamyc typing</h4>
+          <h2 class="fragment">No compile time</h2>
+          <h3 class="fragment">But they also have the "bad":</h3>
+          <ul class="fragment">
+            <li>Slow</li>
+            <li>Not type-safe (static errors occur at runtime)</li>
+            <li>Doesn't scale well</li>
+            <li>They're also not very modern (+10 years)</li>
+          </ul>
           </p>
         </section>
 
         <section>
-          <h1>Who</h1>
-          <h2 class="fragment">Rob Pike: Unix team, Plan 9, Limbo language</h2>
-          <h1 class="fragment">Ken Thompson: Unix, Plan 9, B and C programming languages</h1>
-          <h3 class="fragment">Russ Cox: Plan 9, Google Code Search, RE2</h3>
-          <h3 class="fragment">Robert Griesemer: Google's V8 JavaScript engine, Java HotSpot VM</h3>
-          <h3 class="fragment">plus great programmers like Brad Fitzpatrick, Andrew Gerrand, Stephen Ma, for example</h3>
-          <h3 class="fragment">plus many contributions from the open source community, Blake Mizerany from Heroku for example</h3>
+          <h2>We need you superman!</h2>
+          <h3>We need a language that has the good, avoids the bad, and is suitable to modern computing infrastructure:</h3>
+
+          <ul>
+            <li>statically typed</li>
+            <li>fast execution, fast compilers</li>
+            <li>light and easy to write</li>
+            <li>fast to work in</li>
+            <li>scales well</li>
+            <li>doesn't require tools, but supports them well</li>
+            <li>good at networking and multiprocessing</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Enter Go</h2>
+          <p class="fragment">Fun, efficient and open source (true open source)</p>
+          <p class="fragment">Go is statically typed and compiled, like C++ or Java (with no VM), 
+          but in many ways feels as lightweight and dynamic as JavaScript or Ruby.</p>
+          <p class="fragment">Designed for modern computing (multicore)</p>
+          <p class="fragment">Aimed at software such as webservers, but turned out to be a great 
+          general-purpose language.</p>
+          <p class="fragment">Developed at Google</p>
+        </section>
+
+        <section>
+          <h2>Hello World 2.0</h2>
+          <pre><code>
+          //Serving http://localhost:8080/world:
+          package main
+
+          import (
+            "fmt"
+            "net/http"
+            "log"
+          )
+
+          func main() {
+            http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+              fmt.Fprintf(w, "Hello, %q", r.URL.Path[1:])
+            })
+
+            log.Fatal(http.ListenAndServe(":8080", nil))
+          }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Highlights</h2>
+
+          <div>
+            <p>Multiple return values
+            <pre><code>
+            func foo() int, string {
+              return 1, "OK"
+            }
+            </code></pre>
+          </div>
+
+          <div>
+            <p>Named return parameters
+            <pre><code>
+            func foo() (bar int){
+              bar = 2+2
+              return
+            }
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>Variadic input parameters</h2>
+          <pre><code>
+            func Greeting(prefix string, who ...string)
+            Greeting("hello:", "Joe", "Anna", "Eileen")
+          </code></pre>
+          who, will have the value []string{"Joe", "Anna", "Eileen"}
+        </section>
+
+        <section>
+          <h2>Supports functional programming<h2>
+          <h3>first class functions</h3>
+          <h2>user-defined function types</h2>
+          <h3>function literals and closures</h3>
+        </section>
+
+        <section>
+          <h3>Closures are just local functions</h3>
+          <pre><code>
+            func foo(f func()) {
+              x := f()
+
+              func() {
+                println(x)
+              }()
+            }
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Features</h3>
+          <h2>Type inference</h2>
+          <pre><code>foo := "This is a string type"</code></pre>
+          <h2>Interfaces</h2>
+          <pre><code>
+            type Foo interface {
+              privateMethod() int
+              PublicMethod() int
+            }
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Interfaces are satisfied implicitly, every type that implements it's methods is satisfying the interface</h3>
+          <h2>This is very powerful!</h2>
+        </section>
+
+        <section>
+          <h2>Concurrency basics</h2>
+
+            <p class="sup">Start a goroutine
+            <pre><code>go f()</code></pre>
+
+            <p>Channel sends
+            <pre><code>ch <- value</code></pre>
+
+            <p>Channel receive
+            <pre><code>value = <-ch</code></pre>
+
+            <p>Starting a goroutine
+            <pre><code>
+              func (s *Service) Start() chan request {
+                ch := make(chan request)
+                go s.serve(ch)  // s.serve runs concurrently
+                return ch       // returns immediately
+              }
+            </code></pre>
+        </section>
+
+        <section>
+          <h2>Dependency management</h2>
+
+          <p>Dependencies are expressed in source code.</p>
+          <code><pre>import "github.com/bmizerany/pat"</code></pre>
+          <p>It serve for two purposes, import path and library repository.</p>
+          <p>Works better than 99% package managers out there.</p>
+          <p>Just push your code to a public repository and there is another lib out there.</p>
+          <p>The "go get" command download and install all rependencies.</p>
+          <p>Easy to define, easy to use.</p>
+        </section>
+
+
+        <section>
+          <h2>Other Features</h2>
+
+          <p>Emphasis on simplicity; easy to learn</p>
+          <p>Garbage collected</p>
+          <p>Memory layout control (pointers but no pointer arithmetic)</p>
+          <p>Consistent standard library</p>
+          <p>Self-documenting (and well-documented)</p>
+          <p>Integrated testing</p>
+          <p>Ultra fast compiler (can be used as scripting language)</p>
+          <p>Target i386, amd64, arm (Mobile development)</p>
+          <p>But.. as any respected language also has dramas</p>
+        </section>
+
+        <section>
+          <h2>Status</h2>
+
+          <p>Go 1 released 28/03/2012</p>
+          <p>Easy installation: Binaries for OSX, Linux, Windows</p>
+          <p>Stable, mature and suitable for real world problems</p>
+          <p>Used in production at big companies</p>
+          <p>Very active community and growing fast (+100 messages a day)</p>
+        </section>
+
+        <section>
+          <h2>Erlang vs Scala vs Go</h2>
+
+          <p>Erlang and Scala implements the Actor model, Go implements goroutines</p>
+          <p>Scala has thread based Actors that are heavyweight each one requires some amount of
+          memory but it has other more optimized implementations.</p>
+          <p>goroutines are lightweight, threads are heavy</p>
+          <p>All three models uses channels for message to control it's internal state avoiding
+          problems and complexity asociated with concurrent programming.</p>	
+          <p>Erlang has write once variables</p>
+          <p>In Scala passing around primitive data like integers is expensive, because of the JVM legacy</p>
+        </section>
+
+        <section>
+          <h2>The inevitable comparison</h2>
+          <section>
+            <p>node.js/javascript doesn't have concurrency features but it could be compared
+            as a server programming platform.</p>
+            <p>node standard lib is awesome but it's not enought for doing real work.</p>
+            <p>go stdlib is really awesome, http, templates, websockets, tar/zip, json, xml, sql, smtp, etc...</p>
+            <p>node code is by definition non-blocking and asynchronous.</p>
+            <p>go let's you write synchronous looking code which behaves like if it were 
+            asynchronous, without requiring you to handle the callback spaghetti.</p>
+            <p>Many libs in go stdlib are done non-blocking</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>The inevitable comparison</h2>
+          <p>Fibonacci sequence made by the infamous post http://teddziuba.com/2011/10/node-js-is-cancer.html</p>
+          <p>node.js</p>
+          <pre><code>
+            var http = require('http');
+
+            function fibonacci(n) {
+              if (n < 2)
+                return 1;
+              else
+                return fibonacci(n-2) + fibonacci(n-1);
+            }
+
+            http.createServer(function (req, res) {
+              res.writeHead(200, {'Content-Type' : 'text/plain'});
+              res.end(fibonacci(40) + '');
+            }).listen(1337);
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>The inevitable comparison</h2>
+
+          <p>Go</p>
+          <pre><code>
+            package main
+
+            import (
+              "fmt"
+              "net/http"
+              "log"
+            )
+
+            func fibonacci(n int) (result int) {
+              if n < 2 {
+                result = 1
+              } else {
+                result = fibonacci(n-2) + fibonacci(n-1)
+              }
+              return
+            }
+
+            func main() {
+              http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+                w.Write([]byte(fmt.Sprintf("%d", fibonacci(40))))
+              })
+
+              log.Fatal(http.ListenAndServe(":8080", nil))
+            }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Show me the numbers!</h2>
+
+          <section class="fragment">
+            <p>node.js</p>
+            <code><pre>
+            time curl http://localhost:1337
+            165580141
+            real	0m3.379s
+            user	0m0.008s
+            sys	0m0.004s
+            </pre></code>
+          </section>
+
+          <section class="fragment">
+            <p>Go</p>
+            <code><pre>
+            time curl http://localhost:8080
+            165580141
+            real	0m1.472s
+            user	0m0.007s
+            sys	0m0.007s
+            </pre></code>
+          </section>
+        </section>
+
+        <section>
+          <h1>Projects using Go</h1>
+        </section>
+
+        <section>
+          <h2>Heroku Dozzer</h2>
+          <p>Consistent, highly-available datastore</p>
+          <img src="doozer.png"/>
+        </section>
+
+        <section>
+          <h2>StatHat</h2>
+          <p>Statistics tracker</p>
+          <img src="stathat.png"/>
+        </section>
+
+        <section>
+          <h2>NGmoco Falcore</h2>
+          <p>Modular HTTP Web server framework</p>
+          <img src="falcore.png"/>
+        </section>
+
+        <section>
+          <h2>Moovweb</h2>
+          <p>Desktop to mobile platform</p>
+          <img src="moovweb.png"/>
+        </section>
+
+        <section>
+          <h2>Try it</h2>
+
+          <p>Much more information at
+          <a href="http://golang.org">http://golang.org</a>
+
+          <p>including full source, documentation, and a playground that 
+          lets you try Go code right from the browser</p>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <p><a href="http://teddziuba.com/2011/10/node-js-is-cancer.html">http://teddziuba.com/2011/10/node-js-is-cancer.html</a>
+          <p><a href="https://groups.google.com/forum/?fromgroups#!topic/golang-nuts/aAgIQiHVNq4">https://groups.google.com/forum/?fromgroups#!topic/golang-nuts/aAgIQiHVNq4</a>
+          <p><a href="http://joshuakehn.com/2011/10/3/Diagnosis-No-Cancer.html">http://joshuakehn.com/2011/10/3/Diagnosis-No-Cancer.html</a>
+          <p><a href="http://www.darkcoding.net/software/go-lang-after-four-months/">http://www.darkcoding.net/software/go-lang-after-four-months/</a>
+          <p><a href="http://areyoufuckingcoding.me/2012/02/14/the-go-tool/">http://areyoufuckingcoding.me/2012/02/14/the-go-tool/</a>
+        </section>
+
+        <section class="slide">
+          <h1>Thanks!</h1>
+          <h2>@victorcoder</h2>
         </section>
       </div>
 
