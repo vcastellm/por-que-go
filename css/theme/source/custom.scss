@@ -48,21 +48,21 @@ $heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b
 // ---------------------------------------------
 
 .reveal {
+  p {
+    color: $mainColor;
+  }
+
   h1 {
     color: #2E2633;
-    font-size: 4.11em;
   }
 
   h2 {
-    font-size: 3.11em;
   }
 
   h3 {
     color: #555152;
-    font-size: 2.11em;
   }
 
   h4 {
-    font-size: 1.30em; 
   }
 }
